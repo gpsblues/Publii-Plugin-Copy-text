@@ -1,0 +1,169 @@
+{
+	"name": "Copy text",
+	"description": "This plugin adds a copy feature to HTML text elements.",
+	"license": "GPL-3.0",
+	"author": "gpsblues - https://www.mywebpassion.it",
+	"version": "1.0.0",
+	"scope": "site",
+	"minimumPubliiVersion": "0.46.1",
+    "assets": {
+        "front": [
+            "copyText.min.js"
+        ]
+    },
+    "messageInOptions": {
+        "type": "info",
+        "text": "The plugin adds a copy function to HTML elements with a custom class, featuring a small clickable icon in the top right corner. After copying, a brief popup notifies the user that the text has been copied to the clipboard. Various customizations are available."
+    },
+	"config": [
+        {
+            "name": "className",
+            "label": "Name",
+            "group": "Custom class",
+            "value": "copy-text",
+            "note": "Specify a custom class name to which the copy function will be applied. Default: \"copy-text\".<br>You can use a default Publii class, such as \"msg--highlight\", but note that all elements using this class will display the copy icon.",
+            "type": "text"
+        },
+        
+        {
+            "name": "classCSS",
+            "label": "Additional Style",
+            "group": "Custom class",
+            "note": "Apply additional basic customizations to the Custom class. For more control, use Publii's Custom CSS section.",
+            "value": false,
+            "type": "checkbox"
+        },
+        {
+            "name": "classBg",
+            "label": "Background",
+            "group": "Custom class",
+            "value": "#efefef",
+            "type": "colorpicker",
+            "dependencies":[
+                {
+                    "field": "classCSS",
+                    "value": true
+                }
+            ]
+        },
+        {
+            "name": "classPadding",
+            "label": "Padding (px)",
+            "group": "Custom class",
+            "value": "25",
+            "note": "",
+            "type": "number",
+            "dependencies":[
+                {
+                    "field": "classCSS",
+                    "value": true
+                }
+            ]
+        },
+        {
+            "name": "classRadius",
+            "label": "Radius (px)",
+            "group": "Custom class",
+            "value": "20",
+            "note": "",
+            "type": "number",
+            "dependencies":[
+                {
+                    "field": "classCSS",
+                    "value": true
+                }
+            ]
+        },
+        
+        {
+            "name": "separator",
+            "type": "separator",
+            "label": "",
+            "group": "Icon settings",
+            "note": "In this section, you can customize the appearance of the icon.",
+            "size": "no-line"
+        },
+        {
+            "name": "iconColor",
+            "label": "Color",
+            "group": "Icon settings",
+            "value": "#0885E7",
+            "note": "",
+            "type": "colorpicker"
+        },
+        {
+            "name": "iconSize",
+            "label": "Size",
+            "group": "Icon settings",
+            "note": "Default: \"16px\".",
+            "value": 16,
+            "type": "range",
+            "min": 8,
+            "max": 36,
+            "step": 1 
+        },
+        {
+            "name": "txtLabel",
+            "label": "Label",
+            "group": "Icon settings",
+            "value": "Copy text",
+            "note": "Leave blank if you only want to display the icon. Default: \"Copy text\".",
+            "type": "text"
+        },
+        {
+            "name": "separator",
+            "type": "separator",
+            "label": "",
+            "group": "Message settings",
+            "note": "In this section, you can customize the text popup that appears after copying.",
+            "size": "no-line"
+        },
+        {
+            "name": "txtMessage",
+            "label": "Text",
+            "group": "Message settings",
+            "value": "Copied!",
+            "note": "Default: \"Copied!\".",
+            "type": "text"
+        },
+        {
+            "name": "txtColor",
+            "label": "Color",
+            "group": "Message settings",
+            "value": "#ffffff",
+            "note": "",
+            "type": "colorpicker"
+        },
+        {
+            "name": "txtBgColor",
+            "label": "Background",
+            "group": "Message settings",
+            "value": "rgba(0,0,0,.8)",
+            "note": "",
+            "type": "colorpicker"
+        },
+        {
+            "name": "txtTime",
+            "label": "Time",
+            "group": "Message settings",
+            "note": "Message duration in milliseconds (ms). Default: \"1500\".",
+            "value": 1500,
+            "type": "range",
+            "min": 500,
+            "max": 3000,
+            "step": 500 
+        }, 
+        {
+           "name": "loadOn",
+           "label": "Load on",
+           "note": "Choose where to load the copy text scripts. Note: The 'All pages' option does not include 'index', '404' and 'search' pages.",
+           "group": "Advanced options",
+           "value": "posts",
+           "type": "radio",
+           "options": [
+                {"label": "Post pages", "value": "posts"},
+                {"label": "All pages", "value": "all"}
+           ]
+     }	  
+   ]
+}
