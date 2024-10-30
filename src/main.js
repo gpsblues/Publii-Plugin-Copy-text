@@ -91,7 +91,7 @@ class MyPlugin {
             const iconColor  = '${this.config.iconColor}';  // Color of the copy icon
             const txtLabel   = '${this.config.txtLabel}';   // Label for the copy action
             const txtMessage = '${this.config.txtMessage}'; // Message to display when the text is successfully copied
-            const txtTime    =  ${this.config.txtTime};      // Duration (in milliseconds) for which the confirmation message will be shown
+            const txtTime    =  ${this.config.txtTime};     // Duration (in milliseconds) for which the confirmation message will be shown
         `;
 
         //Minimize JS
@@ -112,11 +112,11 @@ class MyPlugin {
 		
 		switch (this.config.loadOn) {
 			 case 'posts':
-				  return Array.isArray(context) && context.includes('post') && context.includes('index');
+				  return Array.isArray(context) && context.includes('post');
 			 case 'all':
 				  if (Array.isArray(context)) {
-						// Check if context contains '404' or 'search'
-						if (context.includes('404') || context.includes('search')) {
+						// Check if context contains 'index', '404' or 'search'
+						if (context.includes('404') || context.includes('search') || context.includes('index')) {
 							 return false;
 						} else {
 							 return true;
@@ -127,7 +127,7 @@ class MyPlugin {
 			 default:
 				  return false;
 		}
-  }
+    }
 
 }
 
@@ -141,12 +141,12 @@ function minifyCSS(code) {
 function minifyJS(code) {
     //Simple script to minify CSS
     return code
-        .replace(/\/\*[\s\S]*?\*\//g, '') // Remove multi-line comments
-        .replace(/\/\/.*?(\r?\n|$)/g, '') // Remove single-line comments
-        .replace(/\s*([{}();,:])\s*/g, '$1') // Remove whitespace around certain characters
-        .replace(/\n{2,}/g, '\n') // Remove extra newlines
-        .replace(/\s+/g, ' ') // Replace multiple spaces with a single space
-        .trim(); // Trim leading and trailing whitespace
+        .replace(/\/\*[\s\S]*?\*\//g, '')       // Remove multi-line comments
+        .replace(/\/\/.*?(\r?\n|$)/g, '')       // Remove single-line comments
+        .replace(/\s*([{}();,:])\s*/g, '$1')    // Remove whitespace around certain characters
+        .replace(/\n{2,}/g, '\n')               // Remove extra newlines
+        .replace(/\s+/g, ' ')                   // Replace multiple spaces with a single space
+        .trim();                                // Trim leading and trailing whitespace
 } 
 
 
