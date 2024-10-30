@@ -11,8 +11,9 @@ The plugin adds a copy function to HTML elements with a custom class, featuring 
 - Open Publii CMS and [install the plugin](https://getpublii.com/docs/plugins.html#installingplugins)
 - [Enable the plugin](https://getpublii.com/docs/plugins.html#enablingplugins)
 - Set plugin options by clicking on its name
-- Add the custom class to the HTML element
 - Save, Preview or Sync your website to see it in action
+
+In the plugin settings, define a custom class name (default is 'copy-text'). To enable the copy function, add this class to the HTML tag. The element with the applied class will display a copy icon in the top right corner.
 
 ## Disclaimer
 This plugin is an unofficial extension for the [Publii CMS](https://getpublii.com/). I do not assume any responsibility for potential issues or malfunctions that may occur while using this plugin. Additionally, support for this plugin is not guaranteed.
