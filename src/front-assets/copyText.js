@@ -8,63 +8,65 @@ Minification reduces file size and improves load times, enhancing the user exper
 Please ensure to minify the file before deploying any updates.
 */
 
-// Default configuration variables for the copy functionality
-// These values will be overridden by user settings through a configuration <script> tag
+// Default configuration values that can be overridden by global variables
 let config = {
-    iconSize: 16,           // Size of the copy icon in pixels
-    iconColor: '#2067BC',   // Color of the copy icon
-    txtLabel: '',           // Label for the copy action; left empty if not needed
-    txtMessage: 'Copied!',  // Message to display when the text is successfully copied
-    txtTime: 1500           // Duration (in milliseconds) for which the confirmation message will be shown
+    iconSize: window.iconSize || 16,
+    iconColor: window.iconColor || '#2067BC',
+    txtLabel: window.txtLabel || '',
+    txtMessage: window.txtMessage || 'Copied!',
+    txtTime: window.txtTime || 1500
 };
 
-// Wait for the DOM content to be fully loaded before executing the following code
+/*
+Alternative method using 'typeof' to check if the global variables are defined.
+This approach prevents any errors that may occur if the global variables are not set,
+ensuring that default values are assigned only when necessary.
+
+let config = {
+    // Using window properties or default values if they are undefined
+    iconSize: typeof window.iconSize !== 'undefined' ? window.iconSize : 16,
+    iconColor: typeof window.iconColor !== 'undefined' ? window.iconColor : "#2067BC",
+    txtLabel: typeof window.txtLabel !== 'undefined' ? window.txtLabel : "",
+    txtMessage: typeof window.txtMessage !== 'undefined' ? window.txtMessage : "Copied!",
+    txtTime: typeof window.txtTime !== 'undefined' ? window.txtTime : 1500
+};
+*/
+
+// Run the main function after the DOM is fully loaded
 document.addEventListener("DOMContentLoaded", () => {
-    // Select all elements with the class 'copy-text' and iterate over them
+    // Select all elements with the class 'copy-text'
     document.querySelectorAll(".copy-text").forEach(element => {
-        // Svg icon
-        const svgIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="${config.iconSize}" height="${config.iconSize}" viewBox="0 0 24 24" fill="none" stroke="${config.iconColor}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-copy"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>`;
-        // Create a new span element for the copy icon
+        // SVG for the copy icon using String.raw to preserve special characters
+        const svgIcon = String.raw`<svg xmlns="http://www.w3.org/2000/svg" width="${config.iconSize}" height="${config.iconSize}" viewBox="0 0 24 24" fill="none" stroke="${config.iconColor}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-copy"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>`;
+        
+        // Create the span element for the icon and add the SVG content
         const icon = document.createElement("span");
         icon.innerHTML = svgIcon; // Set the inner HTML to the SVG icon definition
         icon.classList.add("copy-icon"); // Add a class for styling purposes
 
-        // Retrieve the copy label from the configuration
-        const label = config.txtLabel;
-        // If the label is specified (not an empty string), create and append it to the icon
-        if (label !== "") {
-            const textSpan = document.createElement("span"); // Create a span for the label text
+        // Add label text if specified
+        if (config.txtLabel) {
+            const textSpan = document.createElement("span");
             textSpan.classList.add("copy-icon-text"); // Add a class for styling
-            textSpan.innerText = label; // Set the text of the span to the label
+            textSpan.innerText = config.txtLabel; // Set the text of the span to the label
             icon.appendChild(textSpan); // Append the label span to the icon
         }
-
-        // Append the icon to the current copy text element
+        
+        // Append the icon to the main element
         element.appendChild(icon);
 
-        // Add a click event listener to the icon
+        // Click event listener for the icon
         icon.addEventListener("click", () => {
-            // Get the full text content from the element and trim whitespace
-            let mainText = element.innerText.trim();
+            // Trim the main text and remove the label if present
+            const mainText = element.innerText.trim().replace(config.txtLabel, "").trim();
 
-            // If a label is present, remove it and any preceding blank line from the main text
-            if (label !== "") {
-                // Create a regex to match the label preceded by an optional newline character
-                const regex = new RegExp('\\n?' + label + '$');
-                // Remove the label from the main text and trim again to clean up
-                mainText = mainText.replace(regex, '').trim();
-            }
-
-            // Use the Clipboard API to write the cleaned main text to the clipboard
+            // Copy to clipboard and show confirmation
             navigator.clipboard.writeText(mainText).then(() => {
-                // Create a span element for the confirmation popup
                 const popup = document.createElement("span");
                 popup.innerText = config.txtMessage; // Set the text of the popup to the confirmation message
                 popup.classList.add("copy-popup"); // Add a class for styling the popup
                 icon.appendChild(popup); // Append the popup to the icon
-
-                // Remove the popup after the specified duration
-                setTimeout(() => popup.remove(), config.txtTime);
+                setTimeout(() => popup.remove(), config.txtTime); // Remove the popup after the specified duration
             });
         });
     });
