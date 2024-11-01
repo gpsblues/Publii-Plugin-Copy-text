@@ -13,6 +13,8 @@ The plugin adds a copy function to HTML elements with a custom class, featuring 
 - Set plugin options by clicking on its name
 - Save, Preview or Sync your website to see it in action
 
+![Publii](https://raw.githubusercontent.com/gpsblues/Publii-Plugin-Copy-text/refs/heads/main/.assets/screenshot1.png)
+
 In the plugin settings, define a custom class name (default is 'copy-text'). To enable the copy function, add this class to the HTML tag. The element with the applied class will display a copy icon in the top right corner.
 
 ```
@@ -32,7 +34,8 @@ The plugin allows for basic customizations, such as:
 
 For more complex style customizations, you can use Publii's integrated 'Custom CSS' tool.
 
-![Publii](https://raw.githubusercontent.com/gpsblues/Publii-Plugin-Copy-text/refs/heads/main/.assets/screenshot1.png)
+## Note
+If you want to use 'Copy text' to enable code snippet copying, I recommend using the official [Syntax Highlighter plugin](https://marketplace.getpublii.com/plugins/syntax-highlighter/).
 
 ## Disclaimer
 This plugin is an unofficial extension for the [Publii CMS](https://getpublii.com/). I do not assume any responsibility for potential issues or malfunctions that may occur while using this plugin. Additionally, support for this plugin is not guaranteed.
