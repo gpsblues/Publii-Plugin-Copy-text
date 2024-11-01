@@ -18,6 +18,17 @@ In the plugin settings, define a custom class name (default is 'copy-text'). To 
 ```
 <p class="copy-text">Lorem Ipsum is simply dummy text ...</p>
 ```
+![Result](https://raw.githubusercontent.com/gpsblues/Publii-Plugin-Copy-text/refs/heads/main/.assets/screenshot2.png)
+
+The plugin allows for basic customizations, such as:
+- icon size
+- text label
+- copy confirmation message
+- simple style adjustments.
+
+For more complex style customizations, you can use Publii's integrated 'Custom CSS' tool.
+
+![Publii](https://raw.githubusercontent.com/gpsblues/Publii-Plugin-Copy-text/refs/heads/main/.assets/screenshot1.png)
 
 ## Disclaimer
 This plugin is an unofficial extension for the [Publii CMS](https://getpublii.com/). I do not assume any responsibility for potential issues or malfunctions that may occur while using this plugin. Additionally, support for this plugin is not guaranteed.
