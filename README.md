@@ -18,7 +18,11 @@ In the plugin settings, define a custom class name (default is 'copy-text'). To 
 ```
 <p class="copy-text">Lorem Ipsum is simply dummy text ...</p>
 ```
-![Result](https://raw.githubusercontent.com/gpsblues/Publii-Plugin-Copy-text/refs/heads/main/.assets/screenshot2.png)
+![Copy text](https://raw.githubusercontent.com/gpsblues/Publii-Plugin-Copy-text/refs/heads/main/.assets/1.png)
+
+![Copy text](https://raw.githubusercontent.com/gpsblues/Publii-Plugin-Copy-text/refs/heads/main/.assets/2.png)
+
+![Copy text](https://raw.githubusercontent.com/gpsblues/Publii-Plugin-Copy-text/refs/heads/main/.assets/3.png)
 
 The plugin allows for basic customizations, such as:
 - icon size
