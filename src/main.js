@@ -31,7 +31,7 @@ class MyPlugin {
 
             if (this.config.classCSS){
                 classBg = this.config.classBg;
-                classPadding = `${this.config.classPadding}px`;
+                classPadding = `${this.config.classPadding}px!important`;
                 classRadius = `${this.config.classRadius}px`;
             }
 
@@ -39,7 +39,7 @@ class MyPlugin {
                 .${this.config.className} {
                     position: relative;
                     padding: ${classPadding};
-                    padding-top: calc( ${this.config.iconSize}px + ${this.config.iconSize}px);
+                    padding-top: calc( ${this.config.iconSize}px + ${this.config.iconSize}px)!important;
                     background-color: ${classBg};
                     border-radius: ${classRadius};
                 }
@@ -47,14 +47,14 @@ class MyPlugin {
                 .copy-icon {
                     position: absolute;
                     top: calc( ${this.config.iconSize}px / 2);
-                    right: calc( ${this.config.iconSize}px / 2);
+                    right: calc( ${this.config.iconSize}px);
                     cursor: pointer;
                     display: flex;
                     align-items: center;
                 }
                 
                 .copy-icon-text {
-                    margin-left: 6px;
+                    margin-left: 8px;
                     font-size: 0.75rem;
                     color: ${this.config.iconColor};
                 }
@@ -87,11 +87,11 @@ class MyPlugin {
 
         let myCode = `
             // User settings configurations
-            const iconSize   = '${this.config.iconSize}';   // Size of the copy icon in pixels
-            const iconColor  = '${this.config.iconColor}';  // Color of the copy icon
-            const txtLabel   = '${this.config.txtLabel}';   // Label for the copy action
-            const txtMessage = '${this.config.txtMessage}'; // Message to display when the text is successfully copied
-            const txtTime    =  ${this.config.txtTime};     // Duration (in milliseconds) for which the confirmation message will be shown
+            window.iconSize     =  ${this.config.iconSize};    // Size of the copy icon in pixels
+            window.iconColor    = '${this.config.iconColor}';  // Color of the copy icon
+            window.txtLabel     = '${this.config.txtLabel}';   // Label for the copy action
+            window.txtMessage   = '${this.config.txtMessage}'; // Message to display when the text is successfully copied
+            window.txtTime      =  ${this.config.txtTime};     // Duration (in milliseconds) for which the confirmation message will be shown
         `;
 
         //Minimize JS
@@ -127,7 +127,7 @@ class MyPlugin {
 			 default:
 				  return false;
 		}
-    }
+  }
 
 }
 
@@ -141,12 +141,12 @@ function minifyCSS(code) {
 function minifyJS(code) {
     //Simple script to minify CSS
     return code
-        .replace(/\/\*[\s\S]*?\*\//g, '')       // Remove multi-line comments
-        .replace(/\/\/.*?(\r?\n|$)/g, '')       // Remove single-line comments
-        .replace(/\s*([{}();,:])\s*/g, '$1')    // Remove whitespace around certain characters
-        .replace(/\n{2,}/g, '\n')               // Remove extra newlines
-        .replace(/\s+/g, ' ')                   // Replace multiple spaces with a single space
-        .trim();                                // Trim leading and trailing whitespace
+        .replace(/\/\*[\s\S]*?\*\//g, '') // Remove multi-line comments
+        .replace(/\/\/.*?(\r?\n|$)/g, '') // Remove single-line comments
+        .replace(/\s*([{}();,:])\s*/g, '$1') // Remove whitespace around certain characters
+        .replace(/\n{2,}/g, '\n') // Remove extra newlines
+        .replace(/\s+/g, ' ') // Replace multiple spaces with a single space
+        .trim(); // Trim leading and trailing whitespace
 } 
 
 
