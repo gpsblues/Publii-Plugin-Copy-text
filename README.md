@@ -29,15 +29,16 @@ In the plugin settings, define a custom class name (default is 'copy-text'). To 
 ![Copy text](https://raw.githubusercontent.com/gpsblues/Publii-Plugin-Copy-text/refs/heads/main/.assets/3.png)
 
 The plugin allows for basic customizations, such as:
+- Icon type
 - Icon size
 - Text label
 - Copy confirmation message
 - Simple style adjustments
 
-For more complex style customizations, you can use Publii's integrated 'Custom CSS' tool.
+Be aware that existing theme styles might override the plugin settings. For greater control over these settings, you can use the Custom CSS section in Publii.
 
 ## Note
-If you want to use 'Copy text' to enable code snippet copying, I recommend using the official [Syntax Highlighter plugin](https://marketplace.getpublii.com/plugins/syntax-highlighter/).
+If you want to enable the copy function for code snippets, I recommend using the official [Syntax Highlighter plugin](https://marketplace.getpublii.com/plugins/syntax-highlighter/).
 
 ## Disclaimer
 This plugin is an unofficial extension for the [Publii CMS](https://getpublii.com/). I do not assume any responsibility for potential issues or malfunctions that may occur while using this plugin. Additionally, support for this plugin is not guaranteed.
