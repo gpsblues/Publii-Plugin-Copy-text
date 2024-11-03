@@ -25,23 +25,17 @@ class MyPlugin {
         if (this.loadOn(rendererInstance)) {
             //Create CSS
 
-            let classBg = 'inherit';
-            let classPadding = 'inherit';
-            let classRadius = 'inherit';
-
-            if (this.config.classCSS){
-                classBg = this.config.classBg;
-                classPadding = `${this.config.classPadding}px!important`;
-                classRadius = `${this.config.classRadius}px`;
-            }
+            let className = this.config.className
+            // If the custom class is not defined, a default value will be used.
+            if (!className) className = "copy-text"
 
             let myStyle = `
-                .${this.config.className} {
+                .${className} {
                     position: relative;
-                    padding: ${classPadding};
-                    padding-top: calc( ${this.config.iconSize}px + ${this.config.iconSize}px)!important;
-                    background-color: ${classBg};
-                    border-radius: ${classRadius};
+                    padding: ${this.config.classPadding}px;
+                    padding-top: calc(${this.config.iconSize}px * 2)!important;
+                    background-color: ${this.config.classBg};
+                    border-radius: ${this.config.classRadius}px;
                 }
 
                 .copy-icon {
@@ -51,6 +45,11 @@ class MyPlugin {
                     cursor: pointer;
                     display: flex;
                     align-items: center;
+                }
+                
+                .copy-icon svg {
+                    width: ${this.config.iconSize}px;
+                    stroke: ${this.config.iconColor};
                 }
                 
                 .copy-icon-text {
@@ -87,6 +86,7 @@ class MyPlugin {
 
         let myCode = `
             // User settings configurations
+            window.iconChoice   =  ${this.config.iconChoice};  // Icon choiche
             window.iconSize     =  ${this.config.iconSize};    // Size of the copy icon in pixels
             window.iconColor    = '${this.config.iconColor}';  // Color of the copy icon
             window.txtLabel     = '${this.config.txtLabel}';   // Label for the copy action

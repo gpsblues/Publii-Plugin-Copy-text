@@ -3,9 +3,10 @@
 	"description": "This plugin adds a copy feature to HTML text elements.",
 	"license": "GPL-3.0",
 	"author": "gpsblues - https://www.mywebpassion.it",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"scope": "site",
 	"minimumPubliiVersion": "0.46.1",
+    "useCustomCssForOptions": true,
     "assets": {
         "front": [
             "copyText.min.js"
@@ -17,72 +18,40 @@
     },
 	"config": [
         {
+            "name": "separator",
+            "type": "separator",
+            "label": "",
+            "group": "Custom class",
+            "note": "Specify a custom class name to which the copy function will be applied.<br>You can use a default Publii class, such as \"msg--highlight\", but note that all elements using this class will display the copy icon.",
+            "size": "no-line"
+        },
+        {
             "name": "className",
             "label": "Name",
             "group": "Custom class",
             "value": "copy-text",
-            "note": "Specify a custom class name to which the copy function will be applied. Default: \"copy-text\".<br>You can use a default Publii class, such as \"msg--highlight\", but note that all elements using this class will display the copy icon.",
+            "note": "Default: \"copy-text\"",
+            "placeholder": "copy-text",
             "type": "text"
-        },
-        
-        {
-            "name": "classCSS",
-            "label": "Additional Style",
-            "group": "Custom class",
-            "note": "Apply additional basic customizations to the Custom class. For more control, use Publii's Custom CSS section.",
-            "value": false,
-            "type": "checkbox"
-        },
-        {
-            "name": "classBg",
-            "label": "Background",
-            "group": "Custom class",
-            "value": "#efefef",
-            "type": "colorpicker",
-            "dependencies":[
-                {
-                    "field": "classCSS",
-                    "value": true
-                }
-            ]
-        },
-        {
-            "name": "classPadding",
-            "label": "Padding (px)",
-            "group": "Custom class",
-            "value": "25",
-            "note": "",
-            "type": "number",
-            "dependencies":[
-                {
-                    "field": "classCSS",
-                    "value": true
-                }
-            ]
-        },
-        {
-            "name": "classRadius",
-            "label": "Radius (px)",
-            "group": "Custom class",
-            "value": "20",
-            "note": "",
-            "type": "number",
-            "dependencies":[
-                {
-                    "field": "classCSS",
-                    "value": true
-                }
-            ]
-        },
-        
+        },       
         {
             "name": "separator",
             "type": "separator",
             "label": "",
             "group": "Icon settings",
-            "note": "In this section, you can customize the appearance of the icon.",
+            "note": "In this section, you can customize the icon's appearance by setting its color, size, and optional text.",
             "size": "no-line"
         },
+        {
+            "name": "iconChoice",
+            "label": "Select Icon",
+            "group": "Icon settings",
+            "value": 1,
+            "type": "range",
+            "min": 1,
+            "max": 3,
+            "note":"<span class='zio'><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-copy\"><rect width=\"14\" height=\"14\" x=\"8\" y=\"8\" rx=\"2\" ry=\"2\"/><path d=\"M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2\"/></svg><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-clipboard\"><rect width=\"8\" height=\"4\" x=\"8\" y=\"2\" rx=\"1\" ry=\"1\"/><path d=\"M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2\"/></svg><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-files\"><path d=\"M20 7h-3a2 2 0 0 1-2-2V2\"/><path d=\"M9 18a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h7l4 4v10a2 2 0 0 1-2 2Z\"/><path d=\"M3 7.6v12.8A1.6 1.6 0 0 0 4.6 22h9.8\"/></svg></span><br>Choose the icon by moving the horizontal selector."
+          },
         {
             "name": "iconColor",
             "label": "Color",
@@ -95,7 +64,7 @@
             "name": "iconSize",
             "label": "Size",
             "group": "Icon settings",
-            "note": "Default: \"16px\".",
+            "note": "Default: 16px",
             "value": 16,
             "type": "range",
             "min": 8,
@@ -106,10 +75,45 @@
             "name": "txtLabel",
             "label": "Label",
             "group": "Icon settings",
-            "value": "Copy text",
-            "note": "Leave blank if you only want to display the icon. Default: \"Copy text\".",
+            "value": "Copy Text",
+            "note": "Leave blank if you only want to display the icon. Default: Copy Text",
             "type": "text"
         },
+        {
+            "name": "separator",
+            "type": "separator",
+            "label": "",
+            "group": "Box setting",
+            "note": "Apply additional basic customizations to the Custom class. Note that existing theme styles may override these values. For more control, you can use the Custom CSS section in Publii.",
+            "size": "no-line"
+        },
+        {
+            "name": "classBg",
+            "label": "Background color",
+            "group": "Box setting",
+            "value": "#efefef",
+            "type": "colorpicker"
+        },
+        {
+            "name": "classPadding",
+            "label": "Box padding",
+            "group": "Box setting",
+            "value": "20",
+            "note": "Default: 20px",
+            "type": "range",
+            "min": 0,
+            "max": 50
+        },
+        {
+            "name": "classRadius",
+            "label": "Box radius",
+            "group": "Box setting",
+            "value": 5,
+            "note": "Default: 5px",
+            "type": "range",
+            "min": 0,
+            "max": 50
+        }, 
         {
             "name": "separator",
             "type": "separator",
@@ -123,7 +127,8 @@
             "label": "Text",
             "group": "Message settings",
             "value": "Copied!",
-            "note": "Default: \"Copied!\".",
+            "placeholder": "Copied!",
+            "note": "Default: Copied!",
             "type": "text"
         },
         {
@@ -146,7 +151,7 @@
             "name": "txtTime",
             "label": "Time",
             "group": "Message settings",
-            "note": "Message duration in milliseconds (ms). Default: \"1500\".",
+            "note": "Message duration in milliseconds (ms). Default: 1500",
             "value": 1500,
             "type": "range",
             "min": 500,

@@ -1,0 +1,6 @@
+span.zio {
+    display: flex;
+    width: 80%;
+    justify-content: space-between;
+    margin-top: 15px;
+}
