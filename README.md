@@ -7,14 +7,14 @@ This plugin adds a copy feature to HTML text elements.
 ## Features
 The plugin adds a copy function to HTML elements with a custom class, featuring a small clickable icon in the top right corner. After copying, a brief popup notifies the user that the text has been copied to the clipboard. Various customizations are available.
 
+![Publii plugin screenshot](https://raw.githubusercontent.com/gpsblues/Publii-Plugin-Copy-text/refs/heads/main/.assets/screenshot1.png)
+
 ## Installation and Usage
 - Download the .zip file of the latest plugin version from the [release page](https://github.com/gpsblues/Publii-Plugin-Copy-text/releases/).
 - Open Publii CMS and [install the plugin](https://getpublii.com/docs/plugins.html#installingplugins).
 - [Enable the plugin](https://getpublii.com/docs/plugins.html#enablingplugins).
 - Set plugin options by clicking on its name.
 - Save, Preview, or Sync your website to see it in action.
-
-![Publii plugin screenshot](https://raw.githubusercontent.com/gpsblues/Publii-Plugin-Copy-text/refs/heads/main/.assets/screenshot1.png)
 
 In the plugin settings, define a custom class name (default is 'copy-text'). To enable the copy function, add this class to the HTML tag. The element with the applied class will display a copy icon in the top right corner.
 
